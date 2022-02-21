@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+<body>
+     <!-- 
+        If we store website data in Browser storage then ur website will
+        load fast
+        
+      -->
+     <h1>Welcome</h1>
+     <button id="add">Alter user</button>
+     <button id="clear">Clear user</button>
+
+
+     <script>
+          var btn = document.querySelector('#add');
+          var del = document.querySelector('#clear');
+          var title = document.querySelector('h1');
+          // add event for OnButton click inside onclick function call userDetails 
+          btn.onclick = function(){
+              userDetails();
+          }
+          del.onclick = function(){
+              localStorage.clear();
+          }
+
+          // OnButton click function should call
+          function userDetails(){
+            //   alert("Hi")
+            // prompt is used to collect data from user
+            var name = prompt('Please enter your name')
+            localStorage.setItem('username', name)
+            title.textContent = "Welcome : " +  name;
+          }
+          if(!localStorage.getItem("username")){
+              userDetails()
+          }
+          else {
+              var name = localStorage.getItem('username');
+              title.textContent = "Welcome" + name;
+          }
+
+     </script>
+</body>
+</html>
